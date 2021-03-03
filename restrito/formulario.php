@@ -1,3 +1,6 @@
+<?php 
+  include "../validar.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,44 +24,44 @@
                 <h1>Formulário</h1>
                 <form action="cadastro_script.php" method="POST">
                     
-                    <div class="mb-3">
+                    <div class="mb-3 needs-validation">
                         <label for="nome">Nome Completo</label>
-                        <input type="text" class="form-control" placeholder="Digite seu nome" name="nome" requered>                       
+                        <input type="text" class="form-control" placeholder="Digite seu nome" name="nome" required>                       
                     </div> 
                         
-                    <div class="mb-3 col-sm-4">  
+                    <div class="mb-3 col-sm-4 needs-validation">  
                          <label for="telefone">Telefone</label>
-                        <input type="text" class="form-control" placeholder="( xx ) 9 xxxx-xxxx" name="telefone">                
+                        <input type="text" class="form-control" placeholder="( xx ) 9 xxxx-xxxx" name="telefone" required>                
                     </div>              
 
-                    <div class="mb-3 row g-3">
+                    <div class="mb-3 row g-3 needs-validation">
                             
                             <div class="col-sm-6">
                                 <label for="email1">E-mail</label>
-                                <input type="email" class="form-control" placeholder="Digite seu e-mail" name ="email1">
+                                <input type="email" class="form-control" placeholder="Digite seu e-mail" name ="email1" required>
                             </div> 
 
                             <div class="col-sm-6">
                                 <label for="email2">E-mail</label>
-                                <input type="email" class="form-control" placeholder="Confirme seu e-mail" name ="email2">
+                                <input type="email" class="form-control" placeholder="Confirme seu e-mail" name ="email2" required>
                             </div>    
                     </div>
 
                        <div class="mb-3 row g-3">
                                 
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 needs-validation">
                                     <label for="endereco">Endereço</label>
-                                    <input type="text" class="form-control" placeholder="Endereço" name ="endereco">
+                                    <input type="text" class="form-control" placeholder="Endereço" name ="endereco" required>
                                 </div>
 
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 needs-validation">
                                     <label for="numero">Número</label>
-                                    <input type="text" class="form-control" placeholder="N°" name ="numero">
+                                    <input type="text" class="form-control" placeholder="N°" name ="numero" required>
                                 </div>
 
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 needs-validation">
                                     <label for="Estado">Estado</label>
-                                    <select class="form-select" name="estado">
+                                    <select class="form-select" name="estado" required>
                                         <option selected></option>                                        
                                         <option value="AC">AC</option>
                                         <option value="AL">AL</option>
@@ -92,28 +95,29 @@
                                      
                         </div>
 
-                            <div class="mb-3 row g-3">
+                            <div class="mb-3 row g-3 needs-validation">
 
                                 <div class="col-sm-4">
                                     <label for="Cidade">Cidade</label>
-                                    <input type="text" class="form-control" placeholder="Cidade" name="cidade">
+                                    <input type="text" class="form-control" placeholder="Cidade" name="cidade" required>
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label for="Bairro">Bairro</label>
-                                    <input type="text" class="form-control" placeholder="Bairro" name="bairro">
+                                    <input type="text" class="form-control" placeholder="Bairro" name="bairro" required>
                                 </div>
 
                                 <div class="col-sm-3">
                                     <label for="cep">Cep</label>
-                                    <input type="text" class="form-control" placeholder="xxxxx-xxx" name ="cep">
+                                    <input type="text" class="form-control" placeholder="xxxxx-xxx" name ="cep" required>
                                 </div> 
                             </div>     
 
                             <div class="mb-3 row g-3">
-                                        <div class="col-sm-3">                                
+                                        <div class="col-sm-3 needs-validation">                                
                                             <label for="nomeCargo">Cargo</label>                                        
-                                            <select id='cargo' class='form-select' name='cargo'>                                        
+                                            <select id='cargo' class='form-select' name="cargo" required>
+                                                <option selected></option>                                        
                                                 <option value="Vereador">Vereador</option>
                                                 <option value="Assessor">Assessor</option>
                                                 <option value='outros'>Outros</option>
@@ -128,17 +132,17 @@
                                     </div>    
                             </div>
                             
-                        <div class="mb-3">
+                        <div class="mb-3 needs-validation">
                             <span>Sexo</span>
                                 <div class="form-check">
                                     
                                     <label for="sexo-masculino">Masculino</label>
-                                    <input class="form-check-input" type="radio" name = "sexo" value = "Masculino">                                                                                             
-                                    </div>                                        
+                                    <input class="form-check-input" type="radio" name = "sexo" value = "Masculino" required>                                                                                             
+                                    </div>                                       
                                 
                                 <div class="form-check">
                                     <label for="sexo-feminino">Feminino</label>  
-                                    <input class="form-check-input" type="radio" name ="sexo" value = "Feminino">                                          
+                                    <input class="form-check-input" type="radio" name ="sexo" value = "Feminino" required>                                          
                                     </div>    
                         </div>              
 
@@ -147,7 +151,7 @@
                     </div>                                     
 
                 </form>
-                <a href="login.php" class="btn btn-secondary" >Voltar</a>
+                <a href="index.php" class="btn btn-secondary" >Voltar</a>
             </div>
         </div>
     </div>
