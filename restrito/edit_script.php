@@ -1,3 +1,6 @@
+<?php 
+  include "../validar.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,9 +19,11 @@
         <div class= "row">
             
             <?php
+
+            
           
             include "conexao.php";
-
+                
                 $id = $_POST['id'];
                 $nome = $_POST['nome'];
                 $telefone = $_POST['telefone'];
@@ -34,15 +39,16 @@
                 $sexo = $_POST['sexo'];
                                           
                                           
-                $sql = "UPDATE `formulario` SET `nome` = '$nome', `telefone` = '$telefone', `email1` = '$email1', `emai2` = '$email2', `endereco` = '$endereco',
-                `numero` = '$numero', `estado` = '$estado', `cidade` = '$cidade', `bairro` = '$bairro', `cep` = '$cep', `cargo` = '$cargo', `sexo` = '$sexo', WHERE id_pessoa = $id";
-
+                $sql = "UPDATE `formulario` SET `nome` = '$nome', `telefone` = '$telefone', `email1` = '$email1', `email2` = '$email2', `endereco` = '$endereco',
+                `numero` = '$numero', `estado` = '$estado', `cidade` = '$cidade', `bairro` = '$bairro', `cep` = '$cep', `cargo` = '$cargo', `sexo` = '$sexo' WHERE `formulario`.`cod_pessoa` = $id";
 
                 if (mysqli_query($conn, $sql)){
                     mensagemAlerta ("$nome , Alterado com sucesso!", 'success');
+
                 } else 
                     mensagemAlerta ("$nome , Não alterado!", 'danger');
             ?>
+
               
             <a href = "pesquisar.php" class="btn btn-primary"> Voltar </a>
             
