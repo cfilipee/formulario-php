@@ -1,3 +1,6 @@
+<?php 
+  include "../validar.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,8 +27,12 @@
 
         $dados = mysqli_query($conn, $sql);
         $linha = mysqli_fetch_assoc($dados);
+        mysqli_close($conn); 
         
     ?>
+            
+        
+
 
      <div class= "container">
         <div class= "row">
