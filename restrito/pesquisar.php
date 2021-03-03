@@ -1,3 +1,6 @@
+<?php 
+  include "../validar.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,6 +29,7 @@
      $sql = "SELECT * FROM formulario WHERE nome LIKE '%$pesquisar%'";
 
     $dados = mysqli_query($conn, $sql);
+    mysqli_close($conn); 
   ?>
 
  
@@ -46,8 +50,7 @@
                       <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">Telefone</th>
-                        <th scope="col">E-mail1</th>
-                        <th scope="col">E-mail2</th>
+                        <th scope="col">E-mail</th>
                         <th scope="col" class="table-active">Endereço</th>
                         <th scope="col" class="table-active">N°</th>
                         <th scope="col">Estado</th>
@@ -69,7 +72,6 @@
                           $nome = $linha['nome'];
                           $telefone = $linha['telefone'];
                           $email1 = $linha['email1'];
-                          $email2 = $linha['email2'];
                           $endereco = $linha['endereco'];
                           $numero = $linha['numero'];
                           $estado = $linha['estado'];
@@ -83,7 +85,6 @@
                                   <th scope='row'>$nome</th>
                                   <td>$telefone</td>
                                   <td>$email1</td>
-                                  <td>$email2</td>
                                   <td>$endereco</td>
                                   <td>$numero</td>
                                   <td>$estado</td>
@@ -94,21 +95,52 @@
                                   <td>$sexo</td>
                                   <td width=140px>
                                     <a href='pesquisar_edit.php?id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a>
-                                    <a href='#' class='btn btn-danger btn-sm'>Excluir</a>
+                                    <a href='#' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#confirma'
+                                    onclick=" .'"' ."pegar_dados($cod_pessoa, '$nome')" .'"' .">Excluir</a>
                                   </td>
 
                                 </tr>";
                         }
 
-                        ?>  
+                        ?>      
+                          <!-- oneclick="pegar_dados"($id, '$nome')" O Segredo está aqui (Sem concatenação)!!! -->
                           
                         </tbody>
               </table>
-                 <a class="btn btn-primary" href="login.php" class="btn btn-secondary" >Voltar</a>
+                 <a class="btn btn-primary" href="index.php" class="btn btn-secondary" >Voltar</a>
             </div>
         </div>
     </div>
  
+        <div class="modal fade" id="confirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação de Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form action="excluir_script.php" method="POST">
+                      <p>Deseja realmente excluir <b id="nome_pessoa">Nome Pessoa</b> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                      <input type="hidden" name="nome" id="nome_pessoa_1" value="">
+                      <input type="hidden" name="id" id="cod_pessoa" value="">
+                      <input type="submit" class="btn btn-danger" value="Sim">
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          function pegar_dados(id, nome) {
+            document.getElementById('nome_pessoa').innerHTML = nome;
+            document.getElementById('nome_pessoa_1').value = nome;
+            document.getElementById('cod_pessoa').value = id;
+          }
+        </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
