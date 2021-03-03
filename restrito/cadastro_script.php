@@ -1,3 +1,6 @@
+<?php 
+  include "../validar.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,7 +25,6 @@
                 $nome = $_POST['nome'];
                 $telefone = $_POST['telefone'];
                 $email1 = $_POST['email1'];
-                $email2 = $_POST['email2'];
                 $endereco = $_POST['endereco'];
                 $numero = $_POST['numero'];
                 $estado = $_POST['estado'];
@@ -32,9 +34,9 @@
                 $cargo = $_POST['cargo'];
                 $sexo = $_POST['sexo'];
                                           
-                $sql = "INSERT INTO `formulario` (`nome`, `telefone`, `email1`, `email2`, `endereco`, `numero`, `estado`, `cidade`, `bairro`, `cep`, `cargo`, `sexo`) VALUES
-                ('$nome','$telefone','$email1','$email2','$endereco','$numero','$estado','$cidade','$bairro','$cep','$cargo','$sexo')";
-
+                $sql = "INSERT INTO `formulario` (`nome`, `telefone`, `email1`, `endereco`, `numero`, `estado`, `cidade`, `bairro`, `cep`, `cargo`, `sexo`) VALUES
+                ('$nome','$telefone','$email1','$endereco','$numero','$estado','$cidade','$bairro','$cep','$cargo','$sexo')";
+    
 
                 if (mysqli_query($conn, $sql)){
                     mensagemAlerta ("$nome , Cadastro realizado com sucesso!", 'success');
@@ -42,7 +44,7 @@
                     mensagemAlerta ("$nome , Cadastro não realizado!", 'danger');
             ?>
               <hr>
-            <a href = "login.php" class="btn btn-primary"> Voltar </a>
+            <a href = "index.php" class="btn btn-primary"> Voltar </a>
             
         </div>
     </div>
